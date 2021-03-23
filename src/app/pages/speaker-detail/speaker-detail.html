@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-icon slot="start" class="icon" name="arrow-back" (click)="navigateBackToSpeakers()"></ion-icon>
+        <ion-title>{{segmentModel}} Details</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="speaker-detail">
+    <ion-card>
+        <i>
+            <h3>{{detail.name}} :</h3>
+        </i>
+        <u>
+            <b>
+                <h2>Title: {{detail.title}}</h2>
+            </b>
+        </u>
+        <p>{{detail.description}}</p>
+    </ion-card>
+    <ion-list lines="full">
+        <ion-item>
+            <!-- <ion-label>Full Lines Item 1</ion-label> -->
+            <ion-icon name="trash" (click)="deleteSelectedItems()"></ion-icon>
+            <ion-label style="margin-left: 55%;" (click)="wantToDelete()">Select to Delete</ion-label>
+        </ion-item>
+    </ion-list>
+    <ion-card>
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th *ngIf="isToDelete"> Select</th>
+            </tr>
+            <tr *ngFor="let name of classOrTrainingStudents">
+                <td>{{ name.firstname }}</td>
+                <td>{{ name.lastname }}</td>
+                <td>{{ name.age }}</td>
+                <td *ngIf="isToDelete"> <input type="checkbox" (click)="getValue(name)"></td>
+            </tr>
+        </table>
+    </ion-card>
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end" #fab>
+        <ion-fab-button>
+            <ion-icon name="add" (click)="navigateToAddStudent()"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

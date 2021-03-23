@@ -1,0 +1,116 @@
+<ion-app [class.dark-theme]="dark">
+    <ion-split-pane contentId="main-content">
+
+        <ion-menu contentId="main-content">
+            <ion-header>
+                <div id="head"><br>
+                    <ion-list-header>
+                        <ion-img id="header_logo" src="../assets/img/BHCFLogo.png"></ion-img>&nbsp;
+                        <span><b>Blessed Hope Christian Fellowship</b></span>
+                    </ion-list-header><br>
+                </div>
+            </ion-header>
+            <ion-content>
+                <ion-list lines="none">
+                    <ion-menu-toggle autoHide="false">
+                        <ion-item routerLink="/dashboard" routerLinkActive="selected" routerDirection="root" detail="false">
+                            <ion-icon slot="start" name="bar-chart-outline"></ion-icon>
+                            <ion-label>
+                                Dashboard
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                    <ion-menu-toggle autoHide="false">
+                        <ion-item routerLink="/reportings" routerLinkActive="selected" routerDirection="root" detail="false">
+                            <ion-icon slot="start" name="calendar"></ion-icon>
+                            <ion-label>
+                                Reportings
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+
+                <ion-list lines="none">
+                    <ion-list-header>
+                        Conference
+                    </ion-list-header>
+                    <ion-menu-toggle autoHide="false" *ngFor="let p of appPages; let i = index">
+                        <ion-item [routerLink]="p.url" routerLinkActive="selected" routerDirection="root" detail="false">
+                            <ion-icon slot="start" [name]="p.icon + '-outline'"></ion-icon>
+                            <ion-label>
+                                {{p.title}}
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+
+                <ion-item>
+                    <ion-icon slot="start" name="moon-outline"></ion-icon>
+                    <ion-label>
+                        Dark Mode
+                    </ion-label>
+                    <ion-toggle [(ngModel)]="dark"></ion-toggle>
+                </ion-item>
+
+                <ion-list lines="none">
+                    <ion-list-header>
+                        Profile
+                    </ion-list-header>
+
+                    <ion-menu-toggle autoHide="false">
+                        <ion-item routerLink="/account" routerLinkActive="active" routerDirection="root" detail="false">
+                            <ion-icon slot="start" name="person"></ion-icon>
+                            <ion-label>
+                                Profile
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                    <ion-menu-toggle autoHide="false">
+                        <ion-item routerLink="/my-cell-admin" routerLinkActive="active" routerDirection="root" detail="false">
+                            <ion-icon slot="start" name="people"></ion-icon>
+                            <ion-label>
+                                My Cell Group
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                    <ion-menu-toggle autoHide="false">
+                        <ion-item routerLink="/support" routerLinkActive="active" routerDirection="root" detail="false">
+                            <ion-icon slot="start" name="people"></ion-icon>
+                            <ion-label>
+                                My Network
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                    <ion-menu-toggle autoHide="false">
+                        <ion-item button (click)="logout()" detail="false">
+                            <ion-icon slot="start" name="log-out"></ion-icon>
+                            <ion-label>
+                                Logout
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                </ion-list>
+
+                <!-- <ion-list lines="none">
+                    <ion-list-header>
+                        Tutorial
+                    </ion-list-header>
+                    <ion-menu-toggle autoHide="false">
+                        <ion-item button (click)="openTutorial()" detail="false">
+                            <ion-icon slot="start" name="hammer"></ion-icon>
+                            <ion-label>Show Tutorial</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list> -->
+            </ion-content>
+        </ion-menu>
+
+        <ion-router-outlet id="main-content"></ion-router-outlet>
+
+    </ion-split-pane>
+
+</ion-app>

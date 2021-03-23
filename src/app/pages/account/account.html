@@ -1,0 +1,95 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+<!-- *ngIf="username"  -->
+<ion-content>
+    <ion-card class="card"><br>
+        <!-- <div class="ion-padding-bottom ion-text-center"> -->
+        <div class="ion-text-center">
+            <img src="../../../assets/img/avatar.png" alt="avatar">
+            <h2><b>{{holder.firstname}} {{holder.lastname}}</b></h2>
+            <h4>{{ role }}</h4>
+        </div>
+        <div>
+            <!-- <ion-tabs> -->
+            <!-- <ion-tab-bar slot="bottom"> -->
+            <ion-row>
+                <ion-col>
+                    <ion-card class="auxiCard">
+                        <ion-tab-button (click)="optAuxiliaryMember($event)" *ngIf="role === 'Member'">
+                            <ion-icon color="primary" name="person"></ion-icon>
+                            <ion-label>AUXILIARY</ion-label>
+                            <ion-label>{{ auxiliary }}</ion-label>
+                        </ion-tab-button>
+                        <ion-tab-button *ngIf="role !== 'Member'">
+                            <ion-icon color="primary" name="person"></ion-icon>
+                            <ion-label>AUXILIARY</ion-label>
+                            <ion-select name="auxi[]" id="auxi" placeholder="View Auxiliary" #newSelect (ionChange)="optAuxiliary($event)">
+                                <ion-select-option value="Kids">Blessed Kids</ion-select-option>
+                                <ion-select-option value="Blessed Youth">Blessed Youth(13-21)</ion-select-option>
+                                <ion-select-option value="Single">Blessed Singles(Singles 22 up)</ion-select-option>
+                                <ion-select-option value="Mmen">Blessed Men(Married men)</ion-select-option>
+                                <ion-select-option value="Mwomen">Blessed Women(Married women)</ion-select-option>
+                            </ion-select>
+                        </ion-tab-button>
+                    </ion-card>
+                </ion-col>
+                <ion-col>
+                    <ion-card class="miniCard">
+                        <ion-tab-button (click)="optMinistryMember($event)" *ngIf="role === 'Member'">
+                            <ion-icon color="primary" name="person"></ion-icon>
+                            <ion-label>MINISTRY</ion-label>
+                            <ion-label>{{ ministries }}</ion-label>
+                        </ion-tab-button>
+                        <ion-tab-button *ngIf="role !== 'Member'">
+                            <ion-icon color="primary" name="person"></ion-icon>
+                            <ion-label>MINISTRIES</ion-label>
+                            <ion-select (ionChange)="optMinistry($event)" placeholder="View Ministry">
+                                <ion-select-option value="PraiseAndWorship">Praise & Worship</ion-select-option>
+                                <ion-select-option value="Multimedia">Multimedia</ion-select-option>
+                                <ion-select-option value="Hospitality">Hospitality</ion-select-option>
+                                <ion-select-option value="Blessed Kids">Blessed Kidz</ion-select-option>
+                            </ion-select>
+                        </ion-tab-button>
+                    </ion-card>
+                </ion-col>
+                <!-- <ion-col>
+                    <ion-card *ngIf="role !== 'Member'" class="addUserCard">
+                        <ion-tab-button routerLink="/create-new-user">
+                            <ion-icon color="primary" name="person-add"></ion-icon>
+                            <ion-label>ADD NEW USER</ion-label>
+                        </ion-tab-button>
+                    </ion-card>
+                </ion-col> -->
+            </ion-row>
+            <!-- </ion-tab-bar>
+            </ion-tabs> -->
+        </div>
+    </ion-card>
+    <ion-card class="ionCard">
+        <div class="container">
+            <div class="column">
+                <h1>PERSONAL INFORMATION</h1>
+                <hr class="solid">
+                <!-- <p>Fullname: {{holder.firstname}} {{holder.lastname}}</p> -->
+                <p>Birthday: {{holder.birthday}}</p>
+                <p>Age: {{holder.age}}</p>
+                <p>Address: {{holder.address}}</p>
+                <p>Marital Status: {{holder.marital_status}}</p>
+                <p>Email: {{holder.email}}</p>
+                <p>Contact Number: {{holder.contact_number}}</p>
+                <p>Facebook: {{holder.facebook}}</p>
+                <p>Instagram: {{holder.instagram}}</p>
+                <p>Twitter: {{holder.twitter}}</p>
+                <p>Leader: {{holder.leader}}</p>
+            </div>
+            <ion-button type="submit" class="btnLogin" [routerLink]="['/modal-page']">UPDATE INFORMATION
+            </ion-button><br><br>
+        </div>
+    </ion-card>
+</ion-content>
